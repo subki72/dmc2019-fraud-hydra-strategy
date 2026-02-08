@@ -1,0 +1,9 @@
+# Dataset (Jangan di-push)
+*.csv
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Virtual Environments
+venv/
+env/
