@@ -254,15 +254,6 @@ mypy src tests
 
 ---
 
-## Documentation Links
-
-- [Production Readiness Assessment](PRODUCTION-READINESS-ASSESSMENT.md)
-- [Operational Runbook & Troubleshooting](docs/RUNBOOK.md)
-- [Triple QA Audit Reports (100% Remediated)](qa-report/00_executive_summary.md)
-- [Jupyter Research Prototype](Fraud_detection.ipynb)
-
----
-
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
