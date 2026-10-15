@@ -1,5 +1,9 @@
-# Dataset (Jangan di-push)
+# Dataset
 *.csv
+
+# Model Artifacts
+*.joblib
+*.joblib.sha256
 
 # Jupyter Notebook Checkpoints
 .ipynb_checkpoints/
@@ -7,3 +11,21 @@
 # Virtual Environments
 venv/
 env/
+.venv/
+
+# Python Build & Distribution
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.pyc
+
+# Testing & QA
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Documentation, Prompts & Internal QA Reports (Pre-Push Cleanup)
+docs/
