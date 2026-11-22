@@ -104,7 +104,7 @@ jobs:
         run: docker build -t dmc2019-fraud-hydra:ci .
 
       - name: Run Trivy Vulnerability Scanner
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: dmc2019-fraud-hydra:ci
           format: table
