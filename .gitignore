@@ -20,6 +20,11 @@ dist/
 __pycache__/
 *.pyc
 
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+
 # Testing & QA
 .pytest_cache/
 .mypy_cache/
@@ -27,5 +32,5 @@ __pycache__/
 .coverage
 htmlcov/
 
-# Documentation, Prompts & Internal QA Reports (Pre-Push Cleanup)
-docs/
+# Internal QA Scratch Reports
+qa-report/
