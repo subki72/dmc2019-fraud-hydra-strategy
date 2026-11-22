@@ -1,0 +1,19 @@
+services:
+  dmc-fraud:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dmc2019-fraud-hydra:latest
+    container_name: dmc-fraud-cli
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./data:/app/data:ro
+      - ./models:/app/models
+    restart: "no"
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
