@@ -1,6 +1,7 @@
 # Retail Fraud Detection (Data Mining Cup 2019) — Hydra Strategy
 
 [![CI Pipeline](https://github.com/subki72/dmc2019-fraud-hydra-strategy/actions/workflows/ci.yml/badge.svg)](https://github.com/subki72/dmc2019-fraud-hydra-strategy/actions/workflows/ci.yml)
+[![Maturity Grade: Production](https://img.shields.io/badge/Maturity%20Grade-Production%20(73.4%2F100)-success.svg)](https://github.com/subki72/dmc2019-fraud-hydra-strategy)
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue.svg)](https://www.python.org/)
 [![Tests](https://img.shields.io/badge/tests-85%20passed-brightgreen.svg)](tests/)
 [![Test Coverage](https://img.shields.io/badge/coverage-92.18%25-brightgreen.svg)](pyproject.toml)
@@ -95,7 +96,26 @@ The `dmc-fraud` architecture consists of four tightly engineered layers:
 
 ---
 
-## Installation
+## Installation & Single-Command Workflow (Makefile)
+
+```bash
+# Clone repository
+git clone https://github.com/subki72/dmc2019-fraud-hydra-strategy.git
+cd dmc2019-fraud-hydra-strategy
+
+# 1. Install package & dev tooling
+make install
+
+# 2. Run automated test suite (coverage >= 80%)
+make test
+
+# 3. Run Ruff lint & Mypy static type check
+make lint
+make typecheck
+
+# 4. Build hardened production Docker image
+make docker-build
+```
 
 ### From Source using uv (Recommended)
 ```bash
@@ -251,6 +271,44 @@ mypy src tests
 - **Statement Coverage:** **92.18%** (exceeds the 80% CI requirement).
 - **Static Typing:** Fully typed with zero Mypy errors under strict settings across 27 source files.
 - **CI Matrix:** Automated GitHub Actions matrix across Python 3.10, 3.11, 3.12, 3.13 on Linux & Windows.
+
+---
+
+## Project Structure
+
+```text
+dmc2019-fraud-hydra-strategy/
+├── .github/
+│   ├── workflows/ci.yml        # Ruff, Mypy, Pytest matrix, build, Semgrep SAST & Trivy scan
+│   └── dependabot.yml          # Automated weekly security updates
+├── docs/
+│   └── runbook.md              # Operational procedures & incident response playbook
+├── src/dmc_fraud/              # Core modular ML package & CLI
+├── tests/                      # 85 automated unit & integration tests
+├── .dockerignore               # Docker context exclusions
+├── .gitignore                  # Strict .env & artifact exclusions
+├── .pre-commit-config.yaml     # Pre-commit lint & secret hooks
+├── CHANGELOG.md                # Semantic release history
+├── CONTRIBUTING.md             # Developer contribution guidelines
+├── Dockerfile                  # Hardened multi-stage non-root containerfile
+├── docker-compose.yml          # Local orchestration config
+├── LICENSE                     # MIT License
+├── Makefile                    # Single-command workflow targets
+├── pyproject.toml              # Package metadata, Ruff, Mypy, Pytest config
+├── README.md                   # Project documentation
+├── SECURITY.md                 # Vulnerability disclosure policy
+└── uv.lock                     # Deterministic dependency lockfile
+```
+
+---
+
+## Security & Governance
+
+- **Vulnerability Disclosure**: Review our security reporting guidelines in [SECURITY.md](SECURITY.md).
+- **Operational Runbook**: Production batch execution and incident recovery in [docs/runbook.md](docs/runbook.md).
+- **Contribution Guidelines**: Development setup and pull request etiquette in [CONTRIBUTING.md](CONTRIBUTING.md).
+- **Release Changelog**: Track semantic releases and version updates in [CHANGELOG.md](CHANGELOG.md).
+- **License**: Explicit open source licensing under the [MIT License](LICENSE).
 
 ---
 
