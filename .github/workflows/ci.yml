@@ -85,3 +85,29 @@ jobs:
 
       - name: Verify Distribution Artifacts
         run: ls -la dist/
+
+  security-scan:
+    name: Security Scan (SAST & Container)
+    needs: lint-and-typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Semgrep SAST Scanner
+        uses: returntocorp/semgrep-action@v1
+        continue-on-error: true
+        with:
+          config: p/python
+
+      - name: Build Docker Image for Scan
+        run: docker build -t dmc2019-fraud-hydra:ci .
+
+      - name: Run Trivy Vulnerability Scanner
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: dmc2019-fraud-hydra:ci
+          format: table
+          exit-code: "0"
+          severity: CRITICAL,HIGH
+
