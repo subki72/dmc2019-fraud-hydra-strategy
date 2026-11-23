@@ -61,7 +61,7 @@ jobs:
           pip install -e ".[dev]"
 
       - name: Run Pytest with Coverage Gate (>=80%)
-        run: pytest --cov=dmc_fraud --cov-report=term-missing --cov-fail-under=80
+        run: python -m pytest --cov=dmc_fraud --cov-report=term-missing --cov-fail-under=80
 
   build-distribution:
     name: Build Wheel & Sdist
@@ -104,7 +104,7 @@ jobs:
         run: docker build -t dmc2019-fraud-hydra:ci .
 
       - name: Run Trivy Vulnerability Scanner
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@master
         with:
           image-ref: dmc2019-fraud-hydra:ci
           format: table
